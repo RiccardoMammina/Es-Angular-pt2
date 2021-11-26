@@ -1,0 +1,8 @@
+<div class="d-flex bg-danger vh-100 vw-100 overflow-hidden pt-5 justify-content-around">
+  <div class="w-50">
+    <app-user-list [InputUsers]="users" (userDetail)="showUserDetail($event)"></app-user-list>
+  </div>
+  <div *ngIf="user">
+    <app-user-detail [InputDetail]="user" (closeUserDetail)="closeUserDetail()"></app-user-detail>
+  </div>
+</div>
