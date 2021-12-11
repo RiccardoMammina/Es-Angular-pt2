@@ -1,4 +1,30 @@
-<div *ngIf="birah$ | async as birrazza">
-  <p>{{ birrazza | json }}</p>
+<form>
+  <select [(ngModel)]= "nomeBirra" name="beerName" id="BeerName">
+    <option value="" disabled selected>Select your Beer</option>
+    <option *ngFor="let birra of birre">
+      {{ birra.name }}
+    </option>
+  </select>
+
+  <select [(ngModel)]= "grandezzaBirra" name="beerSize" id="BeerSize">
+    <option value="" disabled selected>Select Size</option>
+    <option>medium</option>
+    <option>small</option>
+  </select>
+
+  <button (click)="cliccato()" type="submit">Search</button>
+</form>
+
+
+<div class="card" style="width: 18rem;" >
+  <div class="card-body" *ngIf="birah$ | async as birra; else noBeer">
+    <h5 class="card-title">{{ birra.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ birra.type }}</h6>
+    <p class="card-text">{{ birra.price }}</p>
+  </div>
 </div>
+
+<ng-template #noBeer>
+  <p>Seleziona una birra disponibile dal catalogo</p>
+</ng-template>
 

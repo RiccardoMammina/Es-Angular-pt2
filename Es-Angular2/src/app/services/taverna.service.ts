@@ -78,7 +78,13 @@ private beers$ = from(this.beers);
     return this.beers$;
   }
 
-  findBeer(idBeer: number): Observable<IBeer | undefined> {
-    return this.beers$.pipe(find(beer => beer.id == idBeer))
+  // findBeerById(idBeer: number): Observable<IBeer | undefined> {
+  //   return this.beers$.pipe(find(beer => beer.id == idBeer))
+  // }
+
+  findBeer(beerName: string, beerType: string): Observable<IBeer | undefined> {
+    return this.beers$.pipe(find(beer => beer.name == beerName && beer.type == beerType))
   }
+
+
 }
